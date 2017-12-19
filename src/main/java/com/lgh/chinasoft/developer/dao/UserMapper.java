@@ -1,10 +1,15 @@
 package com.lgh.chinasoft.developer.dao;
 
-import org.apache.ibatis.annotations.Select;
-import org.mapstruct.Mapper;
+import org.springframework.stereotype.Repository;
 
-@Mapper
-public interface UserMapper {
-    @Select("SELECT 1 FROM user")
+/**
+ * @author Administrator
+ */
+@Repository
+public interface UserMapper{
+    /**
+     * test
+     * @return test result
+     */
     int test();
 }
