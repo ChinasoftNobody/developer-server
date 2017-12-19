@@ -1,10 +1,9 @@
 package com.lgh.chinasoft.developer.aop;
 
+import com.lgh.chinasoft.developer.common.Response;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,6 +29,16 @@ public class ControllerHandler {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method controller = signature.getMethod();
         logger.info("[time:{}] Start request method:{}",System.currentTimeMillis(),controller);
+    }
+
+    @Around("pointCutAt()")
+    public Object aroundAction(ProceedingJoinPoint joinPoint){
+        try {
+            return joinPoint.proceed();
+        } catch (Throwable throwable) {
+            logger.error("method execute thrown a exception:" + throwable.getMessage());
+            return new Response(false,throwable.getMessage());
+        }
     }
 
     @After("pointCutAt()")
