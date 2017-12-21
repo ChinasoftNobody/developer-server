@@ -5,7 +5,7 @@ import com.lgh.chinasoft.developer.common.Page;
 /**
  * @author Administrator
  */
-public class QueryUserRequest extends Page{
+public class QueryDeveloperRequest extends Page{
     private String keyword;
 
     public String getKeyword() {

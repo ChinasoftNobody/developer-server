@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * @author Administrator
  */
-public class User implements Serializable{
+public class Developer implements Serializable{
     private String account;
     private String name;
     private String email;
